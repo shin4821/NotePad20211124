@@ -27,10 +27,8 @@
 </code>
 </pre>
 
-주요기능
+주요기능(Use Case Diagram)
 -------------
-* Use Case Diagram
-
 ![Use Case Diagram(JPG)](https://user-images.githubusercontent.com/63482037/143727127-7244093c-6317-4a47-a3d8-d2644d63c5f5.jpg)
 
 
@@ -44,6 +42,10 @@
 
 ![Observer, Factory, Strategy (JPG)](https://user-images.githubusercontent.com/63482037/143729627-d37decb6-6dc9-45bf-9595-18d6732bf4be.jpg)
 
+
+* Command Pattern 활용
+
+![Command Pattern (JPG)](https://user-images.githubusercontent.com/63482037/143729647-1b135141-12f8-43fa-9a81-b65f5ea2c574.jpg)
 
 
 배운점
