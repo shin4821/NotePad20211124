@@ -66,7 +66,7 @@
 -------------
 * 메모장 메인화면
 
-![메모장1](https://user-images.githubusercontent.com/63482037/143730112-b454ca64-bb73-4cac-982e-b69bab2e4958.PNG)
+![메모장11](https://user-images.githubusercontent.com/63482037/143730263-d5c47c0a-ebb0-4c62-ade4-046aa34437f4.PNG)
 
 
 * 글꼴 및 크기 변경 화면
@@ -84,7 +84,7 @@
 
 * 바꾸기 화면
 
-![메모장5](https://user-images.githubusercontent.com/63482037/143730219-9dbab79c-cbd4-4491-8a8a-ba2ee6dbdb83.PNG)
+![메모장55](https://user-images.githubusercontent.com/63482037/143730274-c596c405-b205-46a0-93b9-90b4bb029dcd.PNG)
 
 
 * 미리보기 화면
