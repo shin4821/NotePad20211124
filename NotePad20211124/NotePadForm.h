@@ -7,6 +7,7 @@
 using namespace std;
 typedef signed long int Long;
 
+class Preview;
 class Visitor;
 class WindowText;
 class GetInformation;
@@ -118,6 +119,7 @@ public:
 	BOOL isKeyBoard;
 	Visitor* visitor;
 	CDC dcTemp;
+	Preview* preview;
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

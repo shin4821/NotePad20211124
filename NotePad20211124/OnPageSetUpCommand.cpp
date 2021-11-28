@@ -1,9 +1,12 @@
 //OnPageSetUpCommand.cpp
 #include"OnPageSetUpCommand.h"
+#include"OnPreviewCommand.h"
+#include"Command.h"
 #include"NotePadForm.h"
 #include"LineChange.h"
 #include"PageSetUpDialog.h"
 #include"PageInfo.h"
+#include"Preview.h"
 #include<afxdlgs.h>
 #include<afxwin.h>
 
@@ -38,6 +41,7 @@ void OnPageSetUpCommand::Execute() {
 	int actualHeight;
 	int paperSizeCx;
 	int paperSizeCy;
+	int beforeOrientation;
 
 	//Modal 이어서 굳이 힙에 할당 안해도 됨.
 	PageSetUpDialog pageSetUpDialog(this->notePadForm);
@@ -75,6 +79,7 @@ void OnPageSetUpCommand::Execute() {
 		this->notePadForm->pageInfo->FixPaperSize(portName->dmPaperSize);
 
 		//3.4. 선택한 방향을 구한다.
+		beforeOrientation = this->notePadForm->pageInfo->GetOrientation();
 		this->notePadForm->pageInfo->FixOrientation(portName->dmOrientation);
 
 		//3.5. 해당 용지의 너비, 길이를 구한다.
@@ -87,8 +92,16 @@ void OnPageSetUpCommand::Execute() {
 			paperSizeCy = paperSize.cy / 100;
 		}
 		else {
-			paperSizeCx = this->notePadForm->pageInfo->GetPaperWidth();
-			paperSizeCy = this->notePadForm->pageInfo->GetPaperHeight();
+			if (beforeOrientation == portName->dmOrientation) {
+				paperSizeCx = this->notePadForm->pageInfo->GetPaperWidth();
+				paperSizeCy = this->notePadForm->pageInfo->GetPaperHeight();
+			}
+			else {
+				paperSizeCy = this->notePadForm->pageInfo->GetPaperWidth();
+				paperSizeCx = this->notePadForm->pageInfo->GetPaperHeight();
+				this->notePadForm->pageInfo->FixPaperWidth(paperSizeCx);
+				this->notePadForm->pageInfo->FixPaperHeight(paperSizeCy);
+			}
 		}
 
 
@@ -115,7 +128,59 @@ void OnPageSetUpCommand::Execute() {
 		this->notePadForm->pageInfo->FixActualWidth(actualWidth);
 		this->notePadForm->pageInfo->FixActualHeight(actualHeight);
 	}
-#endif
+#endif 
+
+	    //(21.11.28. 추가) 3.7. 현재 미리보기 창이 켜져있을 경우, 업데이트 시켜준다.
+	    if (this->notePadForm->preview != NULL) {
+			//---------------------------------------------------------------------------------------
+			//원래 Preview의 OnCreate에서 설정해주는 건데, 여기서는 OnCreate를 거치지 않고 바로 업데이트므로 여기서 처리.
+
+
+			CPrintDialog dlg(FALSE, PD_RETURNDEFAULT);
+			dlg.DoModal();
+
+			CDC* pDC = new CDC;
+			pDC->Attach(dlg.m_pd.hDC);
+
+			//1. GlobalLock으로 dlg_의 hDevMode를 가져온다.
+			DEVMODE* pDevMode = (DEVMODE*)GlobalLock(dlg.m_pd.hDevMode);
+
+			//2. hDevMode의 필드를 설정해준다. (가로세로변환, 용지 사이즈)
+			int paperSize = this->notePadForm->pageInfo->GetPaperSize();
+			pDevMode->dmFields |= DM_ORIENTATION | DM_PAPERSIZE;
+			pDevMode->dmPaperSize = paperSize;
+
+			//3. 선택한 용지 방향에 따라 용지의 방향을 바꿔준다.
+			int orientation = this->notePadForm->pageInfo->GetOrientation();
+			if (orientation == 2) {
+				pDevMode->dmOrientation = DMORIENT_LANDSCAPE; //가로 인쇄 설정한다.
+			}
+
+			//5. 변경된 옵션을 바탕으로 dc를 업데이트 한다. 
+			pDC->ResetDC(pDevMode);
+			GlobalUnlock(dlg.m_pd.hDevMode);
+
+			this->notePadForm->printWidth = pDC->GetDeviceCaps(HORZRES);
+			this->notePadForm->printHeight = pDC->GetDeviceCaps(VERTRES);
+
+			pDC->DeleteDC();
+			pDC->Detach();
+			delete pDC;
+			//----------------------------------------------------------------------------------------
+
+
+			this->notePadForm->preview->m_nCurrentPage = 1;
+
+			//2.1. Edit Control에 현재 페이지를 출력한다.
+			CString currentPage;
+			currentPage.Format("%d", this->notePadForm->preview->m_nCurrentPage);
+			this->notePadForm->preview->GetDlgItem(50000)->SetWindowText(currentPage);
+
+
+			this->notePadForm->preview->Invalidate();
+		}
+
+
 	}
 }
 

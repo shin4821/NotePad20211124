@@ -698,6 +698,7 @@ void NotePadForm::OnSize(UINT nType, int cx, int cy) {
 #endif
 
 	//0. (21.09.10 추가) 윈도우 사이즈 바뀔때마다 갱신해준다.
+	//this->scroll->beforeWindowWidth = this->scroll->windowWidth;
 	this->GetClientRect(this->m_rectCurHist);
 	this->scroll->windowWidth = this->m_rectCurHist.right - this->m_rectCurHist.left;
 	this->scroll->windowHeight = this->m_rectCurHist.bottom - this->m_rectCurHist.top;
@@ -734,13 +735,14 @@ void NotePadForm::OnSize(UINT nType, int cx, int cy) {
 		//1.1. 기존 windowWidth에서 적어진 경우,
 		//SmallerThanBefore 연산이 KillFocus일어나면 무한 반복 돈다.
 		if (this->isKillFocus == FALSE && this->scroll->beforeWindowWidth > this->scroll->windowWidth) { //cx
-			//this->lineChange->SmallerThanBefore();
+			
+            this->lineChange->SmallerThanBefore();
 
 			//자동개행된 문서를 펼쳐준다.
-			this->lineChange->LineChangeButtonNotClicked();
+			//this->lineChange->LineChangeButtonNotClicked();
 
 			//펼쳐진 문서를 현재 윈도우 너비만큼 자동개행한다.
-			this->lineChange->LineChangeButtonClicked(this->scroll->windowWidth);
+			//this->lineChange->LineChangeButtonClicked(this->scroll->windowWidth);
 		}
 
 		//1.2. 기존 windowWidth에서 커진 경우,

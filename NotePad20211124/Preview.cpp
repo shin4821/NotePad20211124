@@ -523,6 +523,8 @@ void Preview::OnLastIconClicked() {
 
 void Preview::OnClose() {
 
+	this->notePadForm->preview = NULL;
+
 	CFrameWnd::OnClose();
 }
 
