@@ -69,17 +69,27 @@
 ![메모장11](https://user-images.githubusercontent.com/63482037/143730263-d5c47c0a-ebb0-4c62-ade4-046aa34437f4.PNG)
 
 
+
+
 * 글꼴 및 크기 변경 화면
 
 ![메모장22](https://user-images.githubusercontent.com/63482037/143730134-b5e51485-ae6d-4de7-8448-21f431e4a0ec.PNG)
+
+
+
 
 * 선택 화면
 
 ![메모장33](https://user-images.githubusercontent.com/63482037/143730146-f940447e-aba9-4a8f-b4c3-6201f2080967.PNG)
 
+
+
+
 * 찾기 화면
 
 ![메모장44](https://user-images.githubusercontent.com/63482037/143730207-02476124-c1e3-4a3e-a0dd-9131e5d84b9c.PNG)
+
+
 
 
 * 바꾸기 화면
@@ -87,9 +97,13 @@
 ![메모장55](https://user-images.githubusercontent.com/63482037/143730274-c596c405-b205-46a0-93b9-90b4bb029dcd.PNG)
 
 
+
+
 * 미리보기 화면
 
 ![메모장6](https://user-images.githubusercontent.com/63482037/143730231-a2733dd8-ce58-49b3-8d56-19125f849043.PNG)
+
+
 
 
 * 도움말 화면
