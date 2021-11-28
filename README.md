@@ -64,16 +64,23 @@
 
 구동화면
 -------------
-* 가계부 메인화면
+* 메모장 메인화면
+![메모장1](https://user-images.githubusercontent.com/63482037/143730112-b454ca64-bb73-4cac-982e-b69bab2e4958.PNG)
 
-![가계부1](https://user-images.githubusercontent.com/63482037/130325046-ab19ad00-94a9-485b-bd92-1cae91efce59.PNG)
+* 글꼴 및 크기 변경 화면
+![메모장22](https://user-images.githubusercontent.com/63482037/143730134-b5e51485-ae6d-4de7-8448-21f431e4a0ec.PNG)
 
+* 선택 화면
+![메모장33](https://user-images.githubusercontent.com/63482037/143730146-f940447e-aba9-4a8f-b4c3-6201f2080967.PNG)
 
-* 가계부 찾기화면
+* 찾기 화면
+![메모장44](https://user-images.githubusercontent.com/63482037/143730207-02476124-c1e3-4a3e-a0dd-9131e5d84b9c.PNG)
 
-![가계부 찾기](https://user-images.githubusercontent.com/63482037/130325051-e504a571-a363-42e2-85e7-7b009ddab1b0.PNG)
+* 바꾸기 화면
+![메모장5](https://user-images.githubusercontent.com/63482037/143730219-9dbab79c-cbd4-4491-8a8a-ba2ee6dbdb83.PNG)
 
+* 미리보기 화면
+![메모장6](https://user-images.githubusercontent.com/63482037/143730231-a2733dd8-ce58-49b3-8d56-19125f849043.PNG)
 
-* 가계부 정산화면
-
-![정산하기](https://user-images.githubusercontent.com/63482037/130325062-7cb4fe69-10cc-415e-a8a6-edc5226abea7.PNG)
+* 도움말 화면
+![메모장77](https://user-images.githubusercontent.com/63482037/143730237-cb321233-3ab4-4b1b-b5ec-e9a239979da2.PNG)
