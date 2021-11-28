@@ -42,7 +42,7 @@
 
 * Observer, Factory, Strategy, Visitor Pattern 활용
 
-
+![Composite Pattern (JPG)](https://user-images.githubusercontent.com/63482037/143727191-d9faa5e6-4c65-42fe-a6a4-e2e3aaf52d7f.jpg)
 
 
 
