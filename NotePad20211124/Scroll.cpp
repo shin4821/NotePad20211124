@@ -531,7 +531,7 @@ void Scroll::MovePage() {
 			}
 		}
 		//1.4.
-		else {
+		else if(this->notePadForm->isEndDoc == FALSE){
 			this->siHorizon.nPos = 0;
 		}
 	}
@@ -827,7 +827,7 @@ void Scroll::MovePage() {
 		this->notePadForm->EnableScrollBar(SB_VERT, ESB_ENABLE_BOTH);
 	}
 
-
+	this->notePadForm->isEndDoc = FALSE;
 	//this->notePadForm->RedrawWindow(NULL, NULL, RDW_UPDATENOW | RDW_ERASE);
 	//this->notePadForm->EnableScrollBar(SB_HORZ, ESB_ENABLE_BOTH);
 	this->notePadForm->Invalidate();

@@ -224,7 +224,7 @@ void Preview::OnPaint() {
 		this->notePadForm->lineChange->LineChangeButtonNotClicked();
 	}
 
-	this->notePadForm->lineChange->LineChangeButtonClicked(actualWidth * 4.74);
+	this->notePadForm->lineChange->LineChangeButtonClicked(actualWidth * 4.74); //actualWidth * 4.74
 	int length = this->notePadForm->note->GetLength();
 
 

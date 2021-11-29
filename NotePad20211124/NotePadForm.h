@@ -120,6 +120,7 @@ public:
 	Visitor* visitor;
 	CDC dcTemp;
 	Preview* preview;
+	BOOL isEndDoc;
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);

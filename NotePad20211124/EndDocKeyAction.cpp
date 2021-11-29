@@ -53,7 +53,7 @@ void EndDocKeyAction::KeyDown() {
 	currentX++;
 	this->notePadForm->row->MoveCurrent(currentX);
 
-
+#if 0
 	int i = 0;
 	while (i < currentX) {
 		//2.6.1. i번째 문자를 얻는다.
@@ -74,17 +74,32 @@ void EndDocKeyAction::KeyDown() {
 		i++;
 	}
 
-	//int caretX = this->notePadForm->location->caret->GetX();
 	caretX = this->notePadForm->location->caret->GetX();
+#endif
 
 
-	if (caretX > this->notePadForm->scroll->windowWidth) {
-		this->notePadForm->scroll->siHorizon.nPos = caretX - this->notePadForm->scroll->windowWidth;
 
-		// 스크롤 정보를 set한다.
-		this->notePadForm->SetScrollInfo(SB_HORZ, &this->notePadForm->scroll->siHorizon, TRUE);
+//#if 0
+	Long totalCaretX = this->notePadForm->getTextSize->totalCalculateX(currentX, this->notePadForm->row);
+
+#if 0
+	if (totalCaretX > this->notePadForm->scroll->windowWidth) {
+		this->notePadForm->scroll->siHorizon.nPos = totalCaretX - this->notePadForm->scroll->windowWidth;
+	}
+#endif
+
+	//(21.11.24.추가)2.2.1. Down후 캐럿까지의 물리적 너비가 바꾸기 전 Horizon의 nPos보다 작은 경우,
+	if (totalCaretX < this->notePadForm->scroll->siHorizon.nPos) {
+		//2.2.1.1. Down후 캐럿까지의 물리적 너비에서 윈도우 3분의 1만큼 뺀다.
+		this->notePadForm->scroll->siHorizon.nPos = totalCaretX - this->notePadForm->scroll->windowWidth / 3;
+		if (this->notePadForm->scroll->siHorizon.nPos < 0) {
+			this->notePadForm->scroll->siHorizon.nPos = 0;
+		}
 	}
 
+	// 스크롤 정보를 set한다.
+	this->notePadForm->SetScrollInfo(SB_HORZ, &this->notePadForm->scroll->siHorizon, TRUE);
+//#endif
 
 	//2.4. 캐럿을 옮긴다.
 	this->notePadForm->isOnImeCharForMove = FALSE;
@@ -97,6 +112,8 @@ void EndDocKeyAction::KeyDown() {
 	this->notePadForm->isUp = FALSE;
 	this->notePadForm->isDown = FALSE;
 	this->notePadForm->isDoubleByte = FALSE;
+	this->notePadForm->isEndDoc = TRUE;
+
 
 	this->notePadForm->Notify();
 }

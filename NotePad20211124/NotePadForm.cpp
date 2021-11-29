@@ -179,6 +179,7 @@ NotePadForm::NotePadForm() {
 	this->isShifting = FALSE;
 	this->isComposition = FALSE;
 	this->isKeyBoard = FALSE;
+	this->isEndDoc = FALSE;
 }
 
 int NotePadForm::OnCreate(LPCREATESTRUCT lpCreateStruct) {
